@@ -28,27 +28,26 @@ exactly where your projector sits on the table
 Without this, depth calculation is impossible.
 '''
 
-
 import numpy as np
 
-# Camera intrinsics
-K_cam = np.array([
-    [800, 0, 512],
-    [0, 800, 384],
-    [0, 0, 1]
+# Intrinsics (simple pinhole model)
+fx = fy = 800
+cx = cy = 400
+K_cam  = np.array([[fx, 0, cx],
+                   [0, fy, cy],
+                   [0,  0,  1]])
+
+K_proj = K_cam.copy()
+
+R_flip = np.array([
+    [-1, 0,  0],
+    [ 0, 1,  0],
+    [ 0, 0, -1]
 ])
 
-# Projector intrinsics
-K_proj = np.array([
-    [1000, 0, 512],
-    [0, 1000, 384],
-    [0, 0, 1]
-])
+R_cam = R_flip
+t_cam = np.array([[0], [0], [2.5]])   # camera 2.5m away from room
 
-# Camera at origin
-R_cam = np.eye(3)
-t_cam = np.zeros((3,1))
-
-# Projector shifted sideways
-R_proj = np.eye(3)
-t_proj = np.array([[0.3, 0, 0]]).T
+# Projector slightly to the right of the camera
+R_proj = R_flip
+t_proj = np.array([[0.7], [0], [2.5]])

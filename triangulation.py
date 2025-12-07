@@ -30,6 +30,7 @@ If two people look at the same object from different angles and point toward it,
 
 Triangulation = intersecting the lines of sight.
 '''
+import numpy as np
 
 
 def triangulate(cam_pixel, proj_pixel, K_cam, K_proj, R_cam, t_cam, R_proj, t_proj):
