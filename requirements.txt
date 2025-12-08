@@ -1,0 +1,8 @@
+numpy>=1.21.0
+opencv-python>=4.5.0
+open3d>=0.13.0
+
+# NeRF dependencies (optional - install separately if using NeRF)
+# nerfstudio>=0.3.0  # Uncomment to install NeRF support
+# torch>=2.0.0  # Required for nerfstudio
+# torchvision>=0.15.0  # Required for nerfstudio
